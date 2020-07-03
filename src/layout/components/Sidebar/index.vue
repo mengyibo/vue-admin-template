@@ -1,4 +1,5 @@
 <template>
+
   <div :class="{'has-logo':showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
@@ -22,6 +23,7 @@
 import { mapGetters } from 'vuex'
 import Logo from './Logo'
 import SidebarItem from './SidebarItem'
+// import SidebarMenu from './SiderbarMenu'SidebarMenu
 import variables from '@/styles/variables.scss'
 
 export default {
@@ -36,6 +38,7 @@ export default {
     activeMenu() {
       const route = this.$route
       const { meta, path } = route
+      console.info('meta:' + meta.activeMenu)
       // if set path, the sidebar will highlight the path you set
       if (meta.activeMenu) {
         return meta.activeMenu
