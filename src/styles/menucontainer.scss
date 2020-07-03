@@ -1,0 +1,25 @@
+.thirdMenucontainer{
+    border-radius: 40px;
+    border: 1px #f0f0f2 solid;
+    
+}
+.secondMenuname{
+    text-align: center;
+    background-color: #f0f0f2;
+    padding: 30px 20px 30px 20px;
+    writing-mode: vertical-lr;
+    border-radius: 40px 0 0 40px;
+    display: inline-block;
+    vertical-align: top;
+}
+.thirdMenucontent{
+    display: inline-flex;
+    list-style:none;
+    white-space:nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    li{
+        padding: 16px;
+        flex:auto;
+    }
+}
