@@ -31,135 +31,125 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
-  {
-    path: '/login',
-    component: () => import('@/views/login/index'),
-    hidden: true
-  },
+  // {
+  //   path: '/login',
+  //   component: () => import('@/views/login/index'),
+  //   hidden: true
+  // },
 
-  {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
-  },
+  // {
+  //   path: '/404',
+  //   component: () => import('@/views/404'),
+  //   hidden: true
+  // },
 
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
-    }]
+    redirect: '/level'
   },
-
   {
-    path: '/example',
+    path: '/level',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
+    redirect: '/level/industry',
+    name: 'level',
     meta: {
-      title: 'Nested',
-      icon: 'nested'
+      title: '网站级别',
+      icon: 'zhuanti'
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: 'industry',
+        component: () => import('@/views/nested/menu2/index'), // Parent router-view
+        name: '5efdaa3b2f4c072e10600066',
+        meta: { title: '国家级行业中心' }
       },
       {
-        path: 'menu2',
+        path: 'basicdb',
         component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        name: '5efdaa3b2f4c072e10600067',
+        meta: { title: '国家四大基础库' }
+      },
+      {
+        path: 'basicpf',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e10600068',
+        meta: { title: '国家科技基础条件平台' }
+      },
+      {
+        path: 'profession',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e10600069',
+        meta: { title: '相关行业网站' }
+      },
+      {
+        path: 'regioncenter',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e1060006a',
+        meta: { title: '区域数据中心' }
       }
     ]
   },
-
   {
-    path: 'external-link',
+    path: '/typeinfo',
     component: Layout,
+    redirect: '/typeinfo/menu1',
+    name: 'typeinfo',
+    meta: {
+      title: '信息类型',
+      icon: 'earth'
+    },
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'basicgeo',
+        component: () => import('@/views/nested/menu2/index'), // Parent router-view
+        name: '5efdaa3b2f4c072e1060006b',
+        meta: { title: '基础地理' }
+      },
+      {
+        path: 'basiccoverage',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e1060006c',
+        meta: { title: '基础覆被' }
+      },
+      {
+        path: 'remotesense',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e1060006d',
+        meta: { title: '遥感遥测' }
+      },
+      {
+        path: 'natural',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e1060006e',
+        meta: { title: '自然资源' }
+      },
+      {
+        path: 'environment',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e1060006f',
+        meta: { title: '环境生态' }
+      },
+      {
+        path: 'disaster',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e10600070',
+        meta: { title: '灾害灾难' }
+      },
+      {
+        path: 'socioeconomic',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e10600071',
+        meta: { title: '社会经济' }
+      },
+      {
+        path: 'standard',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e10600072',
+        meta: { title: '标准规范' }
       }
     ]
   },
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
