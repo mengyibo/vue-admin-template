@@ -1,6 +1,8 @@
 <script>
 var secondMenuinfo = ''
+var thirdMenuinfo = ''
 export default {
-  secondMenuinfo
+  secondMenuinfo,
+  thirdMenuinfo
 }
 </script>

@@ -6,3 +6,9 @@ export function searchThirdMenu(menuId) {
     method: 'get'
   })
 }
+export function searchWebsites(thirdMenuid) {
+  return request({
+    url: '/getSubWebsites/' + thirdMenuid,
+    method: 'get'
+  })
+}
