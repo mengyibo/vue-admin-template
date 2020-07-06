@@ -11,7 +11,7 @@ export default {
   name: 'SidebarMenu',
   data() {
     return {
-      isSelected: '首页',
+      isSelected: '天汇搜',
       nav: [
         {
           title: '首页',
@@ -21,7 +21,7 @@ export default {
         {
           title: '天汇搜',
           url: require('@/assets/daohang/THSearch.png'),
-          url_one: require('@/assets/daohang/THSearch.png')
+          url_one: require('@/assets/daohang/THSearch_h.png')
         },
         {
           title: '易搜',

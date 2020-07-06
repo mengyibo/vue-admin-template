@@ -1,8 +1,18 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-
-    <breadcrumb class="breadcrumb-container" />
+    <div class="searchBox">
+      <el-row>
+        <img src="@/assets/daohang/tianhuisou.png" alt="天汇搜">
+        <el-button type="primary">汇搜</el-button>
+        <el-input placeholder="汇搜一下，你就知道" prefix-icon="el-icon-search" />
+      </el-row>
+    </div>
+    <!-- <hamburger
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    /> -->
+    <!-- <breadcrumb class="breadcrumb-container" /> -->
 
     <!-- <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
@@ -27,24 +37,24 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div> -->
+    </div>-->
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
+// import Breadcrumb from '@/components/Breadcrumb'
+// import Hamburger from '@/components/Hamburger'
 
 export default {
   components: {
-    Breadcrumb,
-    Hamburger
+    // Breadcrumb,
+    // Hamburger
   },
   computed: {
     ...mapGetters([
-      'sidebar',
-      'avatar'
+      'sidebar'
+      // 'avatar'
     ])
   },
   methods: {
@@ -61,25 +71,40 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  height: 50px;
-  overflow: hidden;
+  height: 88px;
+  // overflow: hidden;
   position: relative;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  padding: 30px 0 0 80px;
+  // background: #fff;
+  // box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {
     line-height: 46px;
     height: 100%;
     float: left;
     cursor: pointer;
-    transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
+    transition: background 0.3s;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background: rgba(0, 0, 0, .025)
+      background: rgba(0, 0, 0, 0.025);
     }
   }
-
+  .searchBox {
+    img {
+      width: 155px;
+    }
+    .el-button{
+      float: right;
+      right: 220px;
+      position: relative;
+    }
+    .el-input {
+      width: 50%;
+      float: right;
+      right: 240px;
+    }
+  }
   .breadcrumb-container {
     float: left;
   }
@@ -103,10 +128,10 @@ export default {
 
       &.hover-effect {
         cursor: pointer;
-        transition: background .3s;
+        transition: background 0.3s;
 
         &:hover {
-          background: rgba(0, 0, 0, .025)
+          background: rgba(0, 0, 0, 0.025);
         }
       }
     }

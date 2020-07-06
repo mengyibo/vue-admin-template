@@ -2,9 +2,9 @@
   <div style="padding:30px;">
     <div class="thirdMenucontainer">
       <div class="secondMenuname">
-        <img src="@/assets/daohang/down.png" />
+        <img src="@/assets/daohang/down.png">
         {{ secondMenutitle }}
-        <img src="@/assets/daohang/up.png" />
+        <img src="@/assets/daohang/up.png">
       </div>
       <div class="thirdMenucontent">
         <ul class="thirdMenucontent">
@@ -35,7 +35,7 @@
                 class="lozad img-circle"
                 width="40"
                 height="40"
-              />
+              >
             </a>
             <div class="xe-comment">
               <a href="#" class="websiteName">
@@ -44,17 +44,17 @@
               <!-- <p class="overflowClip_2">{{web.desc}}</p> -->
             </div>
           </div>
-          <el-divider></el-divider>
-          <div>
-            <a href>
-              <img src="@/assets/daohang/like.png" alt />
-            </a>
-            <a href>
-              <img src="@/assets/daohang/ulike.png" alt />
-            </a>
-            <a href>
-              <img src="@/assets/daohang/favorit.png" alt />
-            </a>
+          <el-divider />
+          <div class="websiteFooter">
+            <div class="userAction">
+              <img src="@/assets/daohang/like.png">
+            </div>
+            <div class="userAction">
+              <img src="@/assets/daohang/ulike.png">
+            </div>
+            <div class="userAction">
+              <img src="@/assets/daohang/favorit.png">
+            </div>
           </div>
         </div>
       </div>
@@ -75,6 +75,7 @@ export default {
   },
   created() {
     this.fetchData()
+    this.selectThirdmenu('5efdaa3b2f4c072e10600073')
   },
   methods: {
     fetchData() {
@@ -104,4 +105,12 @@ export default {
 </script>
 
 <style>
+.websiteFooter {
+  width: 100%;
+  display: inline-flex;
+}
+.userAction {
+  width: 30%;
+  text-align: center;
+}
 </style>
