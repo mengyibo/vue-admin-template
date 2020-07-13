@@ -5,6 +5,51 @@
 @import './sidebar.scss';
 @import './menucontainer.scss';
 
+@media screen and (min-width:1920px){
+  html{
+    font-size: 10px;
+  }
+}
+@media (min-width: 1440px) and (max-width:1919px){
+  html{
+    font-size: 9px;
+  }
+}
+@media (min-width: 1280px) and (max-width:1439px){
+  html{
+    font-size: 8px;
+  }
+}
+@media (min-width: 1097px) and (max-width:1279px){
+  html{
+    font-size: 7px;
+  }
+}
+@media (min-width: 1097px) and (max-width:1279px){
+  html{
+    font-size: 7px;
+  }
+}
+@media (max-width:1097px){
+  html{
+    font-size: 6px;
+  }
+}
+@media (max-width:800px){
+  html{
+    font-size: 4px;
+  }
+}
+@media (max-width:600px){
+  html{
+    font-size: 3px;
+  }
+}
+@media (max-width:400px){
+  html{
+    font-size: 2px;
+  }
+}
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -18,6 +63,7 @@ label {
 }
 
 html {
+  // font-size: 62.5%;
   height: 100%;
   box-sizing: border-box;
 }
