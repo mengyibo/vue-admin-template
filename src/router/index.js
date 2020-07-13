@@ -37,66 +37,45 @@ export const constantRoutes = [
   //   hidden: true
   // },
 
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  },
   // {
-  //   path: '/404',
-  //   component: () => import('@/views/404'),
-  //   hidden: true
+  //   path: '/tianhuisou/',
+  //   component: Layout,
+  //   redirect: '/tianhuisou/'
   // },
-
   {
     path: '/',
     component: Layout,
-    redirect: '/level'
+    meta: { title: '主页' },
+    redirect: '/home',
+    name: 'Home',
+    children: [{
+      path: '/home',
+      component: () => import('@/views/nested/menu2/index')
+    }]
   },
-  {
-    path: '/level',
-    component: Layout,
-    redirect: '/level/industry',
-    name: 'level',
-    meta: {
-      title: '网站级别',
-      icon: 'zhuanti'
-    },
-    children: [
-      {
-        path: 'industry',
-        component: () => import('@/views/nested/menu2/index'), // Parent router-view
-        name: '5efdaa3b2f4c072e10600066',
-        meta: { title: '国家级行业中心' }
-      },
-      {
-        path: 'basicdb',
-        component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600067',
-        meta: { title: '国家四大基础库' }
-      },
-      {
-        path: 'basicpf',
-        component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600068',
-        meta: { title: '国家科技基础条件平台' }
-      },
-      {
-        path: 'profession',
-        component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600069',
-        meta: { title: '相关行业网站' }
-      },
-      {
-        path: 'regioncenter',
-        component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e1060006a',
-        meta: { title: '区域数据中心' }
-      }
-    ]
-  },
+  // {
+  //   path: '/home',
+  //   component: Layout,
+  //   meta: { title: '主页' },
+  //   children: [
+  //     {
+  //       path: '/',
+  //       component: () => import('@/views/nested/menu2/index')
+  //     }
+  //   ]
+  // },
   {
     path: '/typeinfo',
     component: Layout,
-    redirect: '/typeinfo/menu1',
+    redirect: '/typeinfo/basicgeo',
     name: 'typeinfo',
     meta: {
-      title: '信息类型',
+      title: '按信息类型',
       icon: 'earth'
     },
     children: [
@@ -150,6 +129,48 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/level',
+    component: Layout,
+    redirect: '/level/industry',
+    name: 'level',
+    meta: {
+      title: '按网站级别',
+      icon: 'zhuanti'
+    },
+    children: [
+      {
+        path: 'industry',
+        component: () => import('@/views/nested/menu2/index'), // Parent router-view
+        name: '5efdaa3b2f4c072e10600066',
+        meta: { title: '国家级行业中心' }
+      },
+      // {
+      //   path: 'basicdb',
+      //   component: () => import('@/views/nested/menu2/index'),
+      //   name: '5efdaa3b2f4c072e10600067',
+      //   meta: { title: '国家四大基础库' }
+      // },
+      {
+        path: 'basicpf',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e10600068',
+        meta: { title: '国家科技平台' }
+      },
+      {
+        path: 'profession',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e10600069',
+        meta: { title: '相关行业网站' }
+      },
+      {
+        path: 'regioncenter',
+        component: () => import('@/views/nested/menu2/index'),
+        name: '5efdaa3b2f4c072e1060006a',
+        meta: { title: '区域数据中心' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
@@ -157,6 +178,8 @@ export const constantRoutes = [
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
+  base: '/tianhuisou/',
+  // mode: 'history',
   routes: constantRoutes
 })
 
