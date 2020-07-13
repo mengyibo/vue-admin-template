@@ -76,6 +76,9 @@ export default {
   created() {
     this.fetchData()
     this.selectThirdmenu('5efdaa3b2f4c072e10600073')
+    this.$bus.$on('websites', params => {
+      this.websites = params
+    })
   },
   methods: {
     fetchData() {

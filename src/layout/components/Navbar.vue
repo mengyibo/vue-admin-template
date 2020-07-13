@@ -1,69 +1,57 @@
 <template>
   <div class="navbar">
     <div class="searchBox">
-      <el-row>
-        <img src="@/assets/daohang/tianhuisou.png" alt="天汇搜">
-        <el-button type="primary">汇搜</el-button>
-        <el-input placeholder="汇搜一下，你就知道" prefix-icon="el-icon-search" />
+      <el-row class="searchBoxtop">
+        <img src="@/assets/daohang/tianhuisou.png" class="searchlogo" alt="天汇搜">
+        <div class="searchBoxright">
+          <el-button type="primary" @click="submitSearchresult()">汇搜</el-button>
+          <el-input v-model="searchText" placeholder="汇搜一下，你就知道" prefix-icon="el-icon-search" class="el-searchinput" @keyup.enter.native="submitSearchresult" />
+          <div class="poplable">
+            <!-- <img src="@/assets/daohang/left.png"> -->
+            <div v-for="(item,index) in recommendation" :key="index" class="poplableitem" @click="submitSearchresult(item.name)">
+              {{ item.name }}
+            </div>
+            <!-- <img src="@/assets/daohang/right.png"> -->
+          </div>
+        </div>
       </el-row>
     </div>
-    <!-- <hamburger
-      :is-active="sidebar.opened"
-      class="hamburger-container"
-      @toggleClick="toggleSideBar"
-    /> -->
-    <!-- <breadcrumb class="breadcrumb-container" /> -->
-
-    <!-- <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="click">
-        <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
-        </div>
-        <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item>
-              Home
-            </el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div>-->
   </div>
 </template>
-
 <script>
-import { mapGetters } from 'vuex'
-// import Breadcrumb from '@/components/Breadcrumb'
-// import Hamburger from '@/components/Hamburger'
-
+// import { mapGetters } from 'vuex'
+import { searchRecommendation, searchEngine } from '@/api/remote-search'
+import global from '@/store/Globel'
 export default {
-  components: {
-    // Breadcrumb,
-    // Hamburger
+  data() {
+    return {
+      recommendation: '',
+      searchText: ''
+    }
   },
-  computed: {
-    ...mapGetters([
-      'sidebar'
-      // 'avatar'
-    ])
+  created() {
+    this.displayRecommendation()
   },
   methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+    async displayRecommendation() {
+      await searchRecommendation().then(response => {
+        this.recommendation = response.dataList
+      })
     },
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    async submitSearchresult(...args) {
+      console.log(typeof (args[0]))
+      let searchText = ''
+      if (args[0] && typeof (args[0]) === 'string') {
+        searchText = args[0]
+        this.searchText = args[0]
+      } else {
+        searchText = this.searchText
+      }
+      const thirdMenuid = global.thirdMenuinfo.objectId
+      console.log('searchText:' + searchText + 'thirdMenuid:' + thirdMenuid)
+      searchEngine(thirdMenuid, searchText).then(response => {
+        this.$bus.$emit('websites', response.dataList)
+      })
     }
   }
 }
@@ -71,10 +59,10 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  height: 88px;
+  height: 14vh;
   // overflow: hidden;
   position: relative;
-  padding: 30px 0 0 80px;
+  padding: 3vh 0 0 2.9vw;
   // background: #fff;
   // box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
@@ -90,19 +78,73 @@ export default {
       background: rgba(0, 0, 0, 0.025);
     }
   }
+  .searchBoxtop{
+    height: 100px;
+  }
+  .searchBoxright{
+    float: right;
+    width: 82%;
+  }
+  .poplable{
+    display:inline-flex;
+    margin-left: 5vw;
+    margin-top: 1%;
+    height: 5vh;
+    line-height: 5vh;
+    width: 37vw;
+    img{
+      width: 0.74vh;
+      padding: 1.6vh 0;
+      margin-left: 1.5vw;
+    }
+    .poplableitem{
+      padding: 0px 10px;
+      border-radius: 3px;
+      background-color: #EBEBEB;
+      margin-left: 1.5vw;
+      font-size: 1.6rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+    }
+  }
   .searchBox {
-    img {
-      width: 155px;
+    .searchlogo {
+      // width: 245px;
+      width: 12.7vw;
     }
     .el-button{
       float: right;
-      right: 220px;
+      right: 9%;
       position: relative;
+      width: 8vw;
+      height: 4.26vh;
+      font-size: 1.6rem;
     }
     .el-input {
-      width: 50%;
+      width: 75%;
       float: right;
-      right: 240px;
+      right: 9.8%;
+      font-size: 1.4rem;
+    }
+
+  }
+  .el-searchinput{
+    height: 4.26vh;
+    ::v-deep input{
+      height: 4.26vh;
+      font-size: 1.7rem;
+      line-height: 4.26vh;
+      padding: 0 1.78125vw;
+      border-radius: 0.4rem;
+      border-width: 0.0521vw;
+    }
+    ::v-deep .el-input__prefix{
+      left: 0.5rem;
+      .el-input__icon{
+        width: 1.3vw;
+        line-height: 4.26vh;
+      }
     }
   }
   .breadcrumb-container {
