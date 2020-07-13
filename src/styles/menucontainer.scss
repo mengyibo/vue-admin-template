@@ -1,16 +1,21 @@
 .thirdMenucontainer{
-    border-radius: 40px;
-    border: 1px #f0f0f2 solid;
+    border-radius: 4rem;
+    border: 0.185vh #f0f0f2 solid;
     background-color: #F8F8F8;
+    font-size: 1.6rem;
+    // margin-top: 2vh;
 }
 .secondMenuname{
     text-align: center;
     background-color: #f0f0f2;
-    padding: 20px 15px;
+    padding: 1.9vh 0.78125vw;
     writing-mode: vertical-lr;
-    border-radius: 40px 0 0 40px;
+    border-radius: 4rem 0 0 4rem;
     display: inline-block;
     vertical-align: top;
+    img{
+        width: 0.73vw;
+    }
 }
 .thirdMenucontent{
     display: inline-flex;
@@ -18,10 +23,12 @@
     white-space:nowrap;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-inline-start: 10px;
-    width: 94%;
+    padding-inline-start: 0.521vw;
+    width: 64vw;
     li{
-        padding: 5px 10px;
+        padding: 0 1vh;
+        cursor: pointer;
+        margin: 1vh 0;
         // flex:auto;
     }
 }
@@ -31,25 +38,26 @@
     word-break: break-word;
 }
 .col-sm-3{
-    width: 20%;
+    width: 14vw;
     float: left;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 13px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-size: 1.4rem;
 }
 .websiteItem{
-    padding: 15px;
-    height: 86px;
+    padding: 1vw;
+    height: 10vh;
     cursor: pointer;
-    border-radius: 20px;
-    border: 1px solid #e4ecf3;
-    margin-top: 20px;
+    border-radius: 2rem;
+    border: 0.0521vw solid #e4ecf3;
+    margin-top: 2vh;
     background-color: #fff;
     .websiteInfo{
-        height: 40px;
+        height: 4vh;
     }
     .el-divider{
-        margin: 2px 0;
+        margin: 0.19vh 0;
+        height: 0.0521vw;
     }
 }
 .xe-user-img{
@@ -57,7 +65,9 @@
     display: block;
     margin-right: 10px;
     img{
-        border-radius: 50%;
+        width: 2vw;
+        // height: 2vw;
+        // border-radius: 50%;
         vertical-align: middle;
     }
     
@@ -69,6 +79,6 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    line-height: 20px;
+    line-height: 2.1vh;
     width: auto;
 }

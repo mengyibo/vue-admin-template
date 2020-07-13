@@ -10,6 +10,9 @@
         <!-- <h1 class="sidebar-title">{{ title }} </h1> -->
       </router-link>
     </transition>
+    <div style="position:absolute;width:90%;top:9vh;left:0.7vw">
+      <el-divider />
+    </div>
   </div>
 </template>
 
@@ -44,21 +47,24 @@ export default {
 .sidebar-logo-container {
   position: relative;
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  height: 13vh;
+  line-height: 4.63vh;
   background: #fefefe;
   text-align: center;
   overflow: hidden;
-
+  .el-divider--horizontal{
+    height: 0.0521vw;
+    margin: 2.2vh 0;
+  }
   & .sidebar-logo-link {
     height: 100%;
     width: 100%;
 
     & .sidebar-logo {
-      width: 176px;
+      width: 90%;
       // height: 32px;
       vertical-align: middle;
-      margin-right: 12px;
+      // margin-right: 28px;
     }
 
     & .sidebar-title {
@@ -67,7 +73,7 @@ export default {
       color: #fff;
       font-weight: 600;
       line-height: 50px;
-      font-size: 14px;
+      font-size: 1.4rem;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       vertical-align: middle;
     }
