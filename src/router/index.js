@@ -82,49 +82,49 @@ export const constantRoutes = [
       {
         path: 'basicgeo',
         component: () => import('@/views/nested/menu2/index'), // Parent router-view
-        name: '5efdaa3b2f4c072e1060006b',
+        name: '5f0bc7b82f4c0703388270d1',
         meta: { title: '基础地理' }
       },
       {
         path: 'basiccoverage',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e1060006c',
+        name: '5f0bc7b82f4c0703388270d2',
         meta: { title: '基础覆被' }
       },
       {
         path: 'remotesense',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e1060006d',
+        name: '5f0bc7b82f4c0703388270d3',
         meta: { title: '遥感遥测' }
       },
       {
         path: 'natural',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e1060006e',
+        name: '5f0bc7b82f4c0703388270d4',
         meta: { title: '自然资源' }
       },
       {
         path: 'environment',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e1060006f',
+        name: '5f0bc7b82f4c0703388270d5',
         meta: { title: '环境生态' }
       },
       {
         path: 'disaster',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600070',
+        name: '5f0bc7b82f4c0703388270d6',
         meta: { title: '灾害灾难' }
       },
       {
         path: 'socioeconomic',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600071',
+        name: '5f0bc7b82f4c0703388270d7',
         meta: { title: '社会经济' }
       },
       {
         path: 'standard',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600072',
+        name: '5f0bc7b82f4c0703388270d8',
         meta: { title: '标准规范' }
       }
     ]
@@ -142,7 +142,7 @@ export const constantRoutes = [
       {
         path: 'industry',
         component: () => import('@/views/nested/menu2/index'), // Parent router-view
-        name: '5efdaa3b2f4c072e10600066',
+        name: '5f0bc7b82f4c0703388270cd',
         meta: { title: '国家级行业中心' }
       },
       // {
@@ -154,19 +154,19 @@ export const constantRoutes = [
       {
         path: 'basicpf',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600068',
+        name: '5f0bc7b82f4c0703388270ce',
         meta: { title: '国家科技平台' }
       },
       {
         path: 'profession',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e10600069',
+        name: '5f0bc7b82f4c0703388270cf',
         meta: { title: '相关行业网站' }
       },
       {
         path: 'regioncenter',
         component: () => import('@/views/nested/menu2/index'),
-        name: '5efdaa3b2f4c072e1060006a',
+        name: '5f0bc7b82f4c0703388270d0',
         meta: { title: '区域数据中心' }
       }
     ]

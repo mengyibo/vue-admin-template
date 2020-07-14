@@ -6,13 +6,29 @@
         <div class="searchBoxright">
           <el-button type="primary" @click="submitSearchresult()">汇搜</el-button>
           <el-input v-model="searchText" placeholder="汇搜一下，你就知道" prefix-icon="el-icon-search" class="el-searchinput" @keyup.enter.native="submitSearchresult" />
-          <div class="poplable">
-            <!-- <img src="@/assets/daohang/left.png"> -->
-            <div v-for="(item,index) in recommendation" :key="index" class="poplableitem" @click="submitSearchresult(item.name)">
-              {{ item.name }}
+          <!-- <div class="poplable swiper-container">
+            <img src="@/assets/daohang/left.png">
+            <div v-for="(item,index) in recommendation" :key="index" class="poplableitem swiper-wrapper" @click="submitSearchresult(item.name)">
+              <div class="swiper-slide">
+                {{ item.name }}
+              </div>
             </div>
-            <!-- <img src="@/assets/daohang/right.png"> -->
-          </div>
+            <div class="swiper-button-next" />
+            <div class="swiper-button-prev" />
+            <img src="@/assets/daohang/right.png">
+          </div> -->
+          <swiper class="poplable swiper" :options="swiperOption">
+            <swiper-slide v-for="(item) in recommendation" :key="item.name" class="poplableitem">
+              {{ item.name }}
+            </swiper-slide>
+            <!-- <div slot="pagination" class="swiper-pagination" /> -->
+            <div slot="button-prev" class="swiper-button-prev">
+              <img src="@/assets/daohang/left.png">
+            </div>
+            <div slot="button-next" class="swiper-button-next">
+              <img src="@/assets/daohang/right.png">
+            </div>
+          </swiper>
         </div>
       </el-row>
     </div>
@@ -21,16 +37,47 @@
 <script>
 // import { mapGetters } from 'vuex'
 import { searchRecommendation, searchEngine } from '@/api/remote-search'
-import global from '@/store/Globel'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import '../../../node_modules/swiper/swiper.scss'
+
+var vm = null
 export default {
+
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   data() {
     return {
       recommendation: '',
-      searchText: ''
+      searchText: '',
+      swiperOption: {
+        slidesPerView: 5,
+        spaceBetween: 2,
+        // slidesPerGroup: 5,
+        // loop: true,
+        // loopFillGroupWithBlank: true,
+        // pagination: {
+        //   el: '.swiper-pagination',
+        //   clickable: true
+        // },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        on: {
+          click: function() {
+            console.log(this)
+            const name = this.clickedSlide.innerText
+            vm.submitSearchresult(name)
+          }
+        }
+      }
     }
   },
   created() {
     this.displayRecommendation()
+    vm = this
   },
   methods: {
     async displayRecommendation() {
@@ -39,7 +86,6 @@ export default {
       })
     },
     async submitSearchresult(...args) {
-      console.log(typeof (args[0]))
       let searchText = ''
       if (args[0] && typeof (args[0]) === 'string') {
         searchText = args[0]
@@ -47,9 +93,8 @@ export default {
       } else {
         searchText = this.searchText
       }
-      const thirdMenuid = global.thirdMenuinfo.objectId
-      console.log('searchText:' + searchText + 'thirdMenuid:' + thirdMenuid)
-      searchEngine(thirdMenuid, searchText).then(response => {
+      // const thirdMenuid = global.thirdMenuinfo.objectId
+      searchEngine(searchText).then(response => {
         this.$bus.$emit('websites', response.dataList)
       })
     }
@@ -106,6 +151,7 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
+      width: auto !important;
     }
   }
   .searchBox {

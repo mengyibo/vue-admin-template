@@ -14,11 +14,11 @@ export function searchWebsites(thirdMenuid) {
 }
 export function searchRecommendation() {
   return request({
-    url: '/tags?numCount=4',
+    url: '/tags?numCount=10',
     method: 'get'
   })
 }
-export function searchEngine(level3CatalogObjectId, searcText) {
+export function searchEngine(searcText) {
   return request({
     url: '/search?searchMsg=' + searcText,
     method: 'get'

@@ -6,34 +6,34 @@
         常用网址：
       </div>
       <div class="popWebsite">
-        <li class="recommendation" @click="openweb('http://www.sasclouds.com/chinese/home')">
+        <li class="recommendation" title="自然资源卫星遥感云服务平台" @click="openweb('http://www.sasclouds.com/chinese/home')">
           自然资源卫星遥感云服务平台
         </li>
-        <li class="recommendation" @click="openweb('http://www.nsoas.org.cn/')">
+        <li class="recommendation" title="国家卫星海洋应用中心" @click="openweb('http://www.nsoas.org.cn/')">
           国家卫星海洋应用中心
         </li>
-        <li class="recommendation" @click="openweb('http://www.nsmc.org.cn/NSMC/Home/Index.html')">
+        <li class="recommendation" title="国家卫星气象中心" @click="openweb('http://www.nsmc.org.cn/NSMC/Home/Index.html')">
           国家卫星气象中心
         </li>
-        <li class="recommendation" @click="openweb('http://www.dsac.cn/')">
+        <li class="recommendation" title="地理国情监测云平台" @click="openweb('http://www.dsac.cn/')">
           地理国情监测云平台
         </li>
-        <li class="recommendation" @click="openweb('http://www.resdc.cn/Default.aspx')">
+        <li class="recommendation" title="资源环境数据云平台" @click="openweb('http://www.resdc.cn/Default.aspx')">
           资源环境数据云平台
         </li>
-        <li class="recommendation" @click="openweb('http://www.chinageoss.cn/dsp/home/index.jsp')">
+        <li class="recommendation" title="国家综合地球观测数据共享平台" @click="openweb('http://www.chinageoss.cn/dsp/home/index.jsp')">
           国家综合地球观测数据共享平台
         </li>
-        <li class="recommendation" @click="openweb('http://data.casearth.cn/')">
+        <li class="recommendation" title="数据共享服务系统" @click="openweb('http://data.casearth.cn/')">
           数据共享服务系统
         </li>
-        <li class="recommendation" @click="openweb('http://www.qrstuv.cn/static/home')">
+        <li class="recommendation" title="国家民用空间基础设施共性技术支撑服务网" @click="openweb('http://www.qrstuv.cn/static/home')">
           国家民用空间基础设施共性技术支撑服务网
         </li>
-        <li class="recommendation" @click="openweb('http://www.csdb.cn/')">
+        <li class="recommendation" title="中科院数据云" @click="openweb('http://www.csdb.cn/')">
           中科院数据云
         </li>
-        <li class="recommendation" @click="openweb('http://www.geodata.gov.cn/web/geo/index.html')">
+        <li class="recommendation" title="国家自然资源和地理空间基础信息库" @click="openweb('http://www.geodata.gov.cn/web/geo/index.html')">
           国家自然资源和地理空间基础信息库
         </li>
       </div>
@@ -57,49 +57,62 @@
       </div>
     </div>
     <div class="row websites">
-      <div v-for="(web,index) in websites" :key="index" class="col-sm-3">
-        <div
-          class="websiteItem"
-          data-toggle="tooltip"
-          data-placement="bottom"
-          title
-          :data-original-title="web.linkUrl"
-        >
-          <div class="websiteInfo" @click="openweb(web.linkUrl)">
-            <a class="xe-user-img">
-              <img
-                :src="'http://192.168.8.207:10521/portal' + web.icon"
-                class="lozad img-circle"
-              >
-            </a>
-            <div class="xe-comment">
-              <a href="#" class="websiteName">
-                <strong>{{ web.name }}</strong>
+      <div v-for="(web,index) in websites" :key="index" class="website">
+        <el-tooltip placement="bottom" effect="light">
+          <div slot="content" class="webTooltip">
+            <div id="webName">
+              <img src="@/assets/daohang/left_blue.png">
+              <span id="webNametext">
+                {{ web.name }}
+              </span>
+              <img src="@/assets/daohang/right_blue.png">
+            </div>
+
+            <el-divider />
+            <div>
+              {{ web.desc }}
+            </div>
+          </div>
+          <div
+            class="websiteItem"
+          >
+            <div class="websiteInfo" @click="openweb(web.linkUrl)">
+              <a class="xe-user-img">
+                <img
+                  :src="'http://192.168.8.207:10521/portal' + web.icon"
+                  class="lozad img-circle"
+                >
               </a>
+              <div class="xe-comment">
+                <a href="#" class="websiteName">
+                  <strong>{{ web.name }}</strong>
+                </a>
+              </div>
+            </div>
+            <el-divider />
+            <div class="websiteFooter">
+              <div class="userAction" @click="voteManage(1,web.objectId,1)">
+                <img src="@/assets/daohang/like.png">
+                <span :id="web.objectId">{{ web.popularity }}</span>
+              </div>
+              <div class="userAction" @click="voteManage(-1,web.objectId,2)">
+                <img src="@/assets/daohang/ulike.png">
+              </div>
+              <div class="userAction">
+                <img src="@/assets/daohang/favorit.png">
+              </div>
             </div>
           </div>
-          <el-divider />
-          <div class="websiteFooter">
-            <div class="userAction" @click="voteManage(1,web.objectId,1)">
-              <img src="@/assets/daohang/like.png">
-              <!-- <label for="">999</label> -->
-            </div>
-            <div class="userAction" @click="voteManage(-1,web.objectId,2)">
-              <img src="@/assets/daohang/ulike.png">
-            </div>
-            <div class="userAction">
-              <img src="@/assets/daohang/favorit.png">
-            </div>
-          </div>
-        </div>
+        </el-tooltip>
       </div>
+
     </div>
   </div>
 </template>
 <script>
 import { searchThirdMenu, searchWebsites, searchallThirdmenu, searchallwebsites } from '@/api/remote-search'
 import global from '@/store/Globel'
-import jquery from 'jquery'
+import $ from 'jquery'
 
 export default {
   // store,
@@ -122,6 +135,7 @@ export default {
     this.$bus.$on('websites', params => {
       this.websites = params
     })
+    $("[data-toggle='tooltip']").tooltip()
     // this.getUserIP()
   },
   methods: {
@@ -157,15 +171,15 @@ export default {
         'websiteObjectId': args[1],
         'voteType': args[2]
       }
-      jquery.ajax({
+      $.ajax({
         type: 'POST',
         url: process.env.VUE_APP_BASE_API + '/vote',
         data: JSON.stringify(jsonStr),
         async: false,
         contentType: 'application/json;charset=UTF-8',
         success: function(result) {
-          // 处理成功后你自己的处理
-          console.log(result)
+          // 更改显示的积分
+          $('.userAction #' + args[1]).text(result.data)
         }
       })
     },
@@ -187,6 +201,11 @@ export default {
   text-align: center;
   img{
     width: 0.83vw;
+    vertical-align: text-bottom;
+  }
+  span{
+    font-size: 1.7rem;
+    padding-left: 0.1vw;
   }
 }
 .popWebsites{
@@ -216,6 +235,7 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         padding: 1vh;
+        cursor: pointer;
       }
     }
   }
@@ -225,7 +245,7 @@ export default {
   }
   .websites{
     max-height: 54vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 
   }
   .websites::-webkit-scrollbar {
@@ -260,4 +280,28 @@ export default {
   border-radius: 10px;
   background   : #ededed;
   }
+  #webName{
+    text-align: center;
+    vertical-align: middle;
+    // display: inline-block;
+    img{
+      vertical-align: middle;
+      // display: inline-block;
+    }
+
+  }
+#webNametext{
+  color: #0F70E0;
+  font-size: 1.6rem;
+  text-align: center;
+  display: inline-block;
+  max-width: 10vw;
+  vertical-align: middle;
+
+}
+.webTooltip{
+  .el-divider--horizontal{
+    margin: 1.3vh 0;;
+  }
+}
 </style>
